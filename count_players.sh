@@ -16,11 +16,11 @@
 
 case $1 in
 	"joined the game")
-	up_down="players_online=players_online+1"
+	up_down="players_online = players_online+1"
 	;;
 	"left the game")
-	up_down="players_online=players_online-1"
+	up_down="players_online = players_online-1"
 	;;
 esac
 
-sqlite3 /reallyfat/MCServers/green/autobot/database.green.db "UPDATE counts SET $up_down"
+sqlite3 /reallyfat/MCServers/green/autobot/database.green.db 'UPDATE counts SET "$up_down"'
