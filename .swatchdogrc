@@ -1,0 +1,17 @@
+watchfor /(?:\[\d+:\d+:\d+\]) (?:\[Server thread\/INFO\]:) (?<player_name>\w+) (?<aloha>joined the game|left the game(?<=))/
+	exec bash /reallyfat/MCServers/green/autobot/aloha.sh "$1" "$2"
+
+watchfor /(?<time_stamp>\[\d+:\d+:\d+\]) (?:\[Server thread\/INFO\]:) (?<victim>\w+) (?<way_of_death>hit the ground too hard whilst trying to escape|starved to death whilst fighting|suffocated in a wall whilst fighting|tried to swim in|tried to swim in lava to escape|walked into a cactus whilst trying to escape|walked into danger zone due to|walked into fire whilst fighting|was blown up by|was burnt to a crisp whilst fighting|was fireballed by|was impaled by|was killed by|was killed trying to hurt|was poked to death by a|was poked to death by a sweet berry bush whilst trying to escape|was pummeled by|was shot by|was slain by|was squashed by|was squashed by a falling|was squashed by a falling anvil whilst fighting|was squashed by a falling block whilst fighting|was struck by|was struck by lightning whilst fighting|went off with a bang whilst fighting|withered away whilst fighting) (?<bastard>sweet berry bush|Elder Guardian|Magma Cube|Skeleton Horseman|Spider Jockey|Wither Skeleton|Zombie Villager|Zombie Pigman|\[Intentional Game Design\]|\w+)$(?<=)/
+	exec bash /reallyfat/MCServers/green/autobot/death.sh "$1" "$2" "$3" "$4"
+
+watchfor /(?<time_stamp>\[\d+:\d+:\d+\]) (?:\[Server thread\/INFO\]:) (?<victim>\w+) (?<way_of_death>(blew up|burned to death|discovered the floor was lava|drowned|experienced kinetic energy|fell from a high place|fell off a ladder|fell off scaffolding|fell off some twisting vines|fell off some vines|fell off some weeping vines|fell out of the world|fell while climbing|hit the ground too hard|starved to death|suffocated in a wall|was killed by even more magic|was killed by magic|was pricked to death|was squished too much|was stung to death|went off with a bang|went up in flames|withered away)$(?<=))/
+	exec bash /reallyfat/MCServers/green/autobot/death.sh "$1" "$2" "$3"
+
+watchfor /(?<time_stamp>\[\d+:\d+:\d+\]) (?:\[Server thread\/INFO\]:) (?<victim>\w+) (?<way_of_death>was shot by|was blown up by|was killed by|was slain by|was fireballed by|was pummeled by|was impaled by) (?<bastard>Elder Guardian|Magma Cube|Skeleton Horseman|Spider Jockey|Wither Skeleton|Zombie Villager|Zombie Pigman|\w+) (?<with>using|trying to hurt) (?<tool>.*)$(?<=)/
+ 	exec bash /reallyfat/MCServers/green/autobot/death.sh "$1" "$2" "$3" "$4" "$5" "$6"
+	
+watchfor /fuck/
+	exec bash /reallyfat/MCServers/green/autobot/fuck_counter.sh
+
+watchfor /please daddy bedtime/
+	exec bash /reallyfat/MCServers/green/autobot/bedtime.sh
